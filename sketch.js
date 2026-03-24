@@ -106,6 +106,7 @@ function setup() {
   canvas = createCanvas(1200, 800);  
   resizeGame();
 
+  pixelDensity(1);
   colorMode(RGB, 255);
 
   platforms = [
@@ -1709,22 +1710,19 @@ function drawDebug() {
 
 function resizeGame() {
   const baseWidth = 1200;
-  const baseHeight = 800;
+  const baseHeight = 800
 
-  const scaleX = windowWidth / baseWidth;
-  const scaleY = windowHeight / baseHeight;
+  const scale = Math.min(windowWidth / baseWidth, windowHeight / baseHeight);
 
-  const scale = Math.min(scaleX, scaleY);
-
-  const newWidth = baseWidth * scale;
-  const newHeight = baseHeight * scale;
+  const displayWidth = baseWidth * scale;
+  const displayHeight = baseHeight * scale;
 
   canvas.style("width", newWidth + "px");
   canvas.style("height", newHeight + "px");
 
-  const x = (windowWidth - newWidth) / 2;
-  const y = (windowHeight - newHeight) / 2;
-  canvas.position(x, y);
+  canvas.position(
+    (windowWidth - displayWidth) / 2,
+    (windowHeight - displayHeight) / 2);
 }
 
 function windowResized() {
