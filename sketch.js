@@ -1415,6 +1415,7 @@ class Bomber extends Enemy {
 
   die() {
    this.explode();
+   sfxKill.play(0, 0.8, 2);
    enemiesKilled++;
    score += 200;
   }
