@@ -104,7 +104,6 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(1200, 800);  
-  resizeGame();
 
   colorMode(RGB, 255);
 
@@ -1415,7 +1414,7 @@ class Bomber extends Enemy {
 
   die() {
    this.explode();
-   sfxKill.play(0, 0.8, 2);
+   if (!this.isDummy) sfxKill.play(0, 0.8, 2);
    enemiesKilled++;
    score += 200;
   }
@@ -1726,8 +1725,4 @@ function resizeGame() {
   const x = (windowWidth - newWidth) / 2;
   const y = (windowHeight - newHeight) / 2;
   canvas.position(x, y);
-}
-
-function windowResized() {
-  resizeGame();
 }
