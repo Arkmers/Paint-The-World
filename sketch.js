@@ -547,7 +547,6 @@ function drawGame() {
   
   drawUI();
 
-  // if (debug) drawDebug();
 }
 
 function drawGameOver() {
@@ -1040,9 +1039,6 @@ class Player {
     imageMode(CENTER);
     image(playerImg, 0, 0, this.w, this.h);
 
-    // stroke(0);
-    // strokeWeight(4);
-    // rect(this.x, this.y, this.w, this.h);
     pop();
   }
 }
@@ -1693,36 +1689,10 @@ function drawMap() {
   }
 }
 
-function centerCanvas() {
-  var x = (windowWidth - width) / 2;
-  var y = (windowHeight - height) / 2;
-  canvas.position(x, y);
-}
-
-function drawDebug() {
+function drawDebug() { //
   fill(0);
   strokeWeight(0);
   text("Debug Info", 50, 90);
   text(`State: ${player.state}`, 50, 110);
   text(`Direction: ${player.facing === 1 ? "right" : "left"}`, 50, 130);         
-}
-
-function resizeGame() {
-  const baseWidth = 1200;
-  const baseHeight = 800;
-
-  const scaleX = windowWidth / baseWidth;
-  const scaleY = windowHeight / baseHeight;
-
-  const scale = Math.min(scaleX, scaleY);
-
-  const newWidth = baseWidth * scale;
-  const newHeight = baseHeight * scale;
-
-  canvas.style("width", newWidth + "px");
-  canvas.style("height", newHeight + "px");
-
-  const x = (windowWidth - newWidth) / 2;
-  const y = (windowHeight - newHeight) / 2;
-  canvas.position(x, y);
 }
